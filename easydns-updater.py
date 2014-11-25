@@ -87,7 +87,8 @@ while True:
 	if cached_ip != current_ip:
 		hosts = load_hosts()
 		for host in hosts:
-			print "Updating %s: %s" % (host, update_host(hosts[host], current_ip))
+			result = update_host(hosts[host], current_ip)
+			print "Updating %s: %s" % (host, result)
 	else:
 		print "Public IP Matches Cache, Nothing to Do..."
 
