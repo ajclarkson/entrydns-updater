@@ -1,7 +1,7 @@
 #!/usr/bin/python
-# easydns-updater.py ~ ajclarkson.co.uk
+# entrydns-updater.py ~ ajclarkson.co.uk
 #
-# Updater for Dynamic DNS on EasyDNS Domains
+# Updater for Dynamic DNS on EntryDNS Domains
 # Performs an update every 30 minutes for each given domain access token in
 # the hosts.json file.
 
@@ -62,9 +62,9 @@ def load_hosts():
 
 def update_host(token, current_ip):
 	'''
-	Formulate and Execute an Update request on EasyDNS API for a given access token / IP
+	Formulate and Execute an Update request on EntryDNS API for a given access token / IP
 
-	token: (string) Access Token for an EasyDNS Domain
+	token: (string) Access Token for an EntryDNS Domain
 	current_ip: (string) IP to point EasyDNS Domain to
 
 	Return: Status (Either OK, or Error + Code)
