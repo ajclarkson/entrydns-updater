@@ -86,6 +86,7 @@ if cached_ip != current_ip:
 	'''
 	If current IP is different to cached IP, then hosts need updating
 	'''
+	set_cached_ip(current_ip)
 	hosts = load_hosts()
 	for host in hosts:
 		result = update_host(hosts[host], current_ip)
