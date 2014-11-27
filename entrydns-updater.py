@@ -2,7 +2,7 @@
 # entrydns-updater.py ~ ajclarkson.co.uk
 #
 # Updater for Dynamic DNS on EntryDNS Domains
-# Performs an update every 30 minutes for each given domain access token in
+# Performs an update for each given domain access token in
 # the hosts.json file.
 
 import json
@@ -77,22 +77,19 @@ def update_host(token, current_ip):
 	else:
 		return "ERROR: Code %s" % response.status_code
 
-'''
-Forever Loop: Check Public IP against Cached IP, if different update specified
-hosts before waiting 30 minutes and repeating.
-'''
-while True:
-	current_ip = get_ip()
-	cached_ip = get_cached_ip()
-	if cached_ip != current_ip:
-		hosts = load_hosts()
-		for host in hosts:
-			result = update_host(hosts[host], current_ip)
-			print "Updating %s: %s" % (host, result)
-	else:
-		print "Public IP Matches Cache, Nothing to Do..."
+current_ip = get_ip()
+cached_ip = get_cached_ip()
+if cached_ip != current_ip:
+	'''
+	If current IP is different to cached IP, then hosts need updating
+	'''
+	hosts = load_hosts()
+	for host in hosts:
+		result = update_host(hosts[host], current_ip)
+		print "Updating %s: %s" % (host, result)
+else:
+	print "Public IP Matches Cache, Nothing to Do..."
 
-	time.sleep(1800)
 
 
 
