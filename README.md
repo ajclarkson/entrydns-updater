@@ -23,7 +23,7 @@ When your public IP does not match this cache, an update request will be perform
 The script has been engineered to be a run once update solution at the moment, and as such it is a perfect candidate for `cron`:
 
 ```
-30	*	*	*	* /path/to/entrydns-updater/entrydns-updater.py
+0,30	*	*	*	* /path/to/entrydns-updater/entrydns-updater.py
 ```
 
 That would be a good starting point for running every 30 minutes.
