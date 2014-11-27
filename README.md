@@ -5,6 +5,7 @@ A basic python script to update EntryDNS A Records providing dynamic DNS on a cu
 ## Requirements
 
 1) EntryDNS must be the name server for your domain (`ns1.entrydns.com`, `ns2.entrydns.com`)
+
 2) You must create an A record for the domain within EntryDNS, which will grant you with an API token for updating that domain.
 
 ## Updating Hosts
