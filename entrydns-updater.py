@@ -9,6 +9,9 @@ import json
 from urllib2 import urlopen
 import requests
 import time
+import os
+
+SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__)) +"/"
 
 def get_cached_ip():
 	'''
@@ -18,7 +21,7 @@ def get_cached_ip():
 	Return: (string) Cached IP or 0 to force refresh of public IP
 	'''
 	try:
-		cached_file = open('.easydns-cachedip', 'r')
+		cached_file = open(SCRIPT_PATH + '.easydns-cachedip', 'r')
 		cached_ip = cached_file.read()
 		cached_file.close()
 		return cached_ip
@@ -32,7 +35,7 @@ def set_cached_ip(ip):
 	ip: (string) Address to be Cached
 	'''
 	try:
-		cached_file = open('.easydns-cachedip', 'w')
+		cached_file = open(SCRIPT_PATH + '.easydns-cachedip', 'w')
 		cached_file.write(ip)
 		cached_file.close()
 	except IOError, e:
@@ -54,7 +57,7 @@ def load_hosts():
 	Return: (dict) Hosts and Access Tokens
 	'''
 	try:
-		hosts_file = open('hosts.json', 'r')
+		hosts_file = open(SCRIPT_PATH + 'hosts.json', 'r')
 		hosts_data = json.load(hosts_file)
 		return hosts_data
 	except IOError, e:
