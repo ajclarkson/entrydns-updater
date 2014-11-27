@@ -21,7 +21,7 @@ def get_cached_ip():
 	Return: (string) Cached IP or 0 to force refresh of public IP
 	'''
 	try:
-		cached_file = open(SCRIPT_PATH + '.easydns-cachedip', 'r')
+		cached_file = open(SCRIPT_PATH + '.entrydns-cachedip', 'r')
 		cached_ip = cached_file.read()
 		cached_file.close()
 		return cached_ip
@@ -35,7 +35,7 @@ def set_cached_ip(ip):
 	ip: (string) Address to be Cached
 	'''
 	try:
-		cached_file = open(SCRIPT_PATH + '.easydns-cachedip', 'w')
+		cached_file = open(SCRIPT_PATH + '.entrydns-cachedip', 'w')
 		cached_file.write(ip)
 		cached_file.close()
 	except IOError, e:
