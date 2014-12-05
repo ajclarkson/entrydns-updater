@@ -8,8 +8,8 @@
 import json
 from urllib2 import urlopen
 import requests
-import time
 import os
+from time import strftime
 
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__)) +"/"
 
@@ -90,9 +90,9 @@ if cached_ip != current_ip:
 	hosts = load_hosts()
 	for host in hosts:
 		result = update_host(hosts[host], current_ip)
-		print "Updating %s: %s" % (host, result)
+		print "%s -- Updating %s: %s" % (strftime("%Y-%m-%d %H:%M:%S"),host, result)
 else:
-	print "Public IP Matches Cache, Nothing to Do..."
+	print "%s -- Public IP Matches Cache (%s), Nothing to Do..." % (strftime("%Y-%m-%d %H:%M:%S"), current_ip)
 
 
 
